@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tik_tok_clone/config/theme/app_theme.dart';
+import 'package:tik_tok_clone/presentation/providers/discover_provider.dart';
+import 'package:tik_tok_clone/presentation/screens/discover/discover_screen.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => DiscoverProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Tik Tok',
+        debugShowCheckedModeBanner: false,
+        home: const DiscoverScreen(),
+        theme: AppTheme().getTheme(),
+      ),
+    );
+  }
+}
